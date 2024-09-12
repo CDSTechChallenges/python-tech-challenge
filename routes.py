@@ -15,9 +15,9 @@ def get_authors():
     # TODO Candidate should return favorites_count on each author
     return jsonify([{'id': author.id, 'name': author.name} for author in authors])
 
-# Obtener un autor por ID y su cantidad de favoritos
 @api.route('/authors/<int:id>', methods=['GET'])
 def get_author(id):
+    # TODO Remove this code. Challenge exercise. Implement this logic, and return favorite count
     author = Author.query.get(id)
     if not author:
         return jsonify({'message': 'Author not found'}), 404
@@ -70,7 +70,6 @@ def delete_post(id):
     db.session.commit()
     return jsonify({'message': 'Post deleted successfully'}), 200
 
-# CRUD Favorites
 @api.route('/favorites', methods=['POST'])
 def add_favorite():
     data = request.get_json()
